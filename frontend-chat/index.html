@@ -7,8 +7,33 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <form>
+        <input name="msg">
+    </form>
+    
+    <div class="display">
+    </div>
+
     <script>
-        var socket = new WebSocket('ws://drachehavoc-didactic-disco-96jj754967h9596-8080.preview.app.github.dev/');
+        const display = document.querySelector(".display")
+        const form = document.querySelector("form")
+
+        var ws = new WebSocket('ws://127.0.0.1:8080')
+
+        ws.addEventListener("message", ev => {
+            const data = document.createElement("div")
+            data.innerHTML = ev.data
+            display.append(data)
+        })
+
+
+        form.addEventListener("submit", ev => {
+            ev.preventDefault()
+            ws.send(form.msg.value)
+            form.msg.value = ""
+        })
+
     </script>
 </body>
 </html>
