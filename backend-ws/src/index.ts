@@ -13,5 +13,5 @@ wss.on('connection', ws => {
     })
   })
 
-  ws.send('Oi como vai querido(a)!?')
+  ws.send('Oii professor lindo, querido, cheiroso, maravilho e que me mora no meu coração <3')
 })
